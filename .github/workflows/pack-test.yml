@@ -1,0 +1,50 @@
+name: pack-test
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  pack-test:
+    runs-on: ubuntu-latest
+    container: ghcr.io/stefan-hoeck/idris2-pack:latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          submodules: recursive
+
+      - name: Trust the workspace
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - name: Install curl
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends curl ca-certificates
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          cache: false
+
+      - name: Install bulloak
+        run: |
+          curl -fsSL \
+            https://github.com/alexfertel/bulloak/releases/download/v0.8.1/bulloak-x86_64-unknown-linux-gnu.tar.gz \
+            | tar -xz -C /usr/local/bin
+          chmod +x /usr/local/bin/bulloak
+          forge --version
+          bulloak --version
+
+      - name: pack test
+        run: pack --no-prompt test testgen

@@ -1,0 +1,73 @@
+# types.toml: scaffold
+
+[scaffold.FoundryLayout]
+module = "FoundryLayout"
+kind = "plain"
+file = "src/FoundryLayout.idr"
+carriers = ["FoundryLayout", "LayoutError"]
+operations = ["readLayout"]
+laws = [
+  "A cwd that contains foundry.toml yields that file's test directory",
+  "A toml without a test key yields Foundry's default test directory",
+  "A cwd without foundry.toml is MissingFoundryToml naming foundry.toml",
+  "A parent toml is not consulted when cwd does not expose one",
+]
+refined = false
+notes = "CLI environment is the invocation cwd; no --foundry-root flag"
+
+[scaffold.BulloakRun]
+module = "BulloakRun"
+kind = "plain"
+file = "src/BulloakRun.idr"
+carriers = ["BulloakError"]
+operations = ["runBulloak"]
+laws = [
+  "A valid btt path yields Solidity that names the tree's contract and keeps tree comments",
+  "Relative and absolute paths on the same tree yield the same Solidity",
+  "A missing tree is MissingBtt naming the path that was passed",
+  "A PATH without bulloak is MissingBulloak",
+]
+refined = false
+notes = "btt in, Solidity source or error out; writing the file is CLI composition"
+
+[scaffold.PlankImport]
+module = "PlankImport"
+kind = "plain"
+file = "src/PlankImport.idr"
+carriers = ["String"]
+operations = ["insertPlankImport", "plankImportLine"]
+laws = [
+  "The PlankTestBase import is the next import after the last existing import",
+  "When there are no imports, the PlankTestBase import is still present",
+  "Existing import lines are unchanged and stay in order",
+]
+refined = false
+notes = "Pure rewrite; no --plank flag"
+
+[scaffold.ForgeCheck]
+module = "ForgeCheck"
+kind = "plain"
+file = "src/ForgeCheck.idr"
+carriers = ["ForgeError"]
+operations = ["checkForge"]
+laws = [
+  "A forge-buildable path in a Foundry project is success",
+  "A PATH without forge is MissingForge",
+  "A path that does not compile is BuildFailed",
+]
+refined = false
+notes = "path in, success or error out; required CLI gate"
+
+[scaffold.Testgen]
+module = "Testgen"
+kind = "plain"
+file = "src/Testgen.idr"
+carriers = ["TestgenResult"]
+operations = ["runTestgen"]
+laws = [
+  "Success is exit 0 and a forge-buildable file at the bulloak-mapped path in the layout test directory",
+  "Missing foundry.toml, btt, bulloak, or forge is a non-zero exit that names the cause",
+  "The CLI takes only the btt location; extra flags are a non-zero exit",
+]
+refined = false
+notes = "Thin composition of FoundryLayout, BulloakRun, PlankImport, ForgeCheck"
