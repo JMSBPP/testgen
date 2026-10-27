@@ -1,0 +1,9 @@
+package testgen-test
+version = 0.1.0
+authors = "JMSBPP"
+
+depends = hedgehog, testgen
+
+main = Test
+executable = "testgen-test"
+sourcedir = "src"

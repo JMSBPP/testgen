@@ -1,0 +1,8 @@
+package testgen
+version = 0.1.0
+authors = "JMSBPP"
+
+modules = FoundryLayout, BulloakRun, PlankImport, ForgeCheck, Testgen
+main = Cli
+executable = testgen
+sourcedir = "src"

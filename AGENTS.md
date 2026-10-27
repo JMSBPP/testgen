@@ -12,6 +12,12 @@
 - [hedgehog](https://github.com/stefan-hoeck/idris2-hedgehog)
 - [idris](https://idris2.readthedocs.io/en/latest/)
 
+#[implementer](session=f3b960f7-3e5f-40f5-bf9d-c4ca2da9da59)
+
+- [hedgehog](https://github.com/stefan-hoeck/idris2-hedgehog)
+- [idris](https://idris2.readthedocs.io/en/latest/)
+- CLI experiments live in `playground/`
+
 ## Worktrees
 
 - Place every worktree at `.worktrees/<name>/`.
