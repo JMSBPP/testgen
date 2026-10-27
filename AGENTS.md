@@ -17,6 +17,7 @@
 - [hedgehog](https://github.com/stefan-hoeck/idris2-hedgehog)
 - [idris](https://idris2.readthedocs.io/en/latest/)
 - CLI experiments live in `playground/`
+- Do not modify test files except to add dependencies.
 
 ## Worktrees
 
