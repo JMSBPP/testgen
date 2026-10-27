@@ -2,7 +2,7 @@
 pragma solidity ^0.8.26;
 
 import {Test} from "forge-std/Test.sol";
-import {PlankDeployer, BuildOptions, Dependency} from "plank-foundry-deployer/PlankDeployer.sol";
+import {PlankDeployer, BuildOptions, Dependency} from "plank-foundry/PlankDeployer.sol";
 import {DynamicArrayLib} from "solady/utils/DynamicArrayLib.sol";
 
 /// @dev Keep module roots in sync with Makefile:PLANK_DEP.
