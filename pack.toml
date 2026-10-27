@@ -1,0 +1,13 @@
+[install]
+apps = [ "testgen" ]
+
+[custom.all.testgen]
+type = "local"
+path = "."
+ipkg = "testgen.ipkg"
+test = "test/test.ipkg"
+
+[custom.all.testgen-test]
+type = "local"
+path = "test"
+ipkg = "test.ipkg"
