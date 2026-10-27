@@ -1,0 +1,10 @@
+[profile.default]
+src = "solidity"
+out = "out"
+libs = ["lib"]
+auto_detect_remappings = false
+remappings = [
+    "forge-std/=lib/forge-std/src/",
+    "plank-foundry-deployer/=lib/plank-foundry/src/",
+    "solady/=lib/solady/src/",
+]
