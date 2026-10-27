@@ -2,6 +2,16 @@
 
 - [foundry](https://www.getfoundry.sh/)
 
+#[test_writer](session_id=3559d5dd-9ba6-4195-9e7b-0bc66aebe405)
+
+- [hedgehog](https://github.com/stefan-hoeck/idris2-hedgehog)
+- [idris](https://idris2.readthedocs.io/en/latest/)
+
+#[ci](session=167b235f-e90a-4e67-81e5-1b749523b82f)
+
+- [hedgehog](https://github.com/stefan-hoeck/idris2-hedgehog)
+- [idris](https://idris2.readthedocs.io/en/latest/)
+
 ## Worktrees
 
 - Place every worktree at `.worktrees/<name>/`.
