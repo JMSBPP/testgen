@@ -48,9 +48,7 @@ resolvePath cwd path = if isAbsolute path then path else cwd ++ "/" ++ path
 
 cmdMissing : (out : String) -> (code : Int) -> Bool
 cmdMissing out code =
-  code == 127
-    || isInfixOf "not found" (toLower out)
-    || isInfixOf "cannot find" (toLower out)
+  code == 127 || isInfixOf "command not found" (toLower out)
 
 ||| Scaffold `bttPath` (relative paths resolved against `cwd`) to Solidity.
 export

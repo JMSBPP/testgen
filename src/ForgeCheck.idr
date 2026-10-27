@@ -38,9 +38,7 @@ Show ForgeError where
 
 cmdMissing : (out : String) -> (code : Int) -> Bool
 cmdMissing out code =
-  code == 127
-    || isInfixOf "not found" (toLower out)
-    || isInfixOf "cannot find" (toLower out)
+  code == 127 || isInfixOf "command not found" (toLower out)
 
 ||| Run `forge build` on `testPath` using `foundry.toml` from `cwd`.
 export

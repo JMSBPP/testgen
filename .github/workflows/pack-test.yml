@@ -23,6 +23,11 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Install curl
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends curl ca-certificates
+
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
         with:
@@ -30,8 +35,6 @@ jobs:
 
       - name: Install bulloak
         run: |
-          apt-get update
-          apt-get install -y --no-install-recommends curl ca-certificates
           curl -fsSL \
             https://github.com/alexfertel/bulloak/releases/download/v0.8.1/bulloak-x86_64-unknown-linux-gnu.tar.gz \
             | tar -xz -C /usr/local/bin
