@@ -1,14 +1,11 @@
 [
     {
-	"command": "testgen <btt-file-location> ",  // no --plank flag from now
+	"name": "scaffold",
 	"services": [
 	    "It must recognize foundry.toml on the enviroment the command line command is executed",
 	    "It must write the inner `bulloak scaffold <btt-file-location>` the test section of the foundry.toml",
 	    "It must add under the last import file if the generated file a import line for PlankTestBase",
 	    "It must run forge build test/<generated file> and succeed"
-	] 
+	]
     }
-    
 ]
-
-
