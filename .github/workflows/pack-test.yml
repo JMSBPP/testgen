@@ -23,6 +23,9 @@ jobs:
         with:
           persist-credentials: false
 
+      - name: Trust the workspace
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
       - name: Install curl
         run: |
           apt-get update
